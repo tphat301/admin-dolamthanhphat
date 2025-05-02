@@ -3,23 +3,25 @@ import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: {
-    port: 3003
+  preview: {
+host: '0.0.0.0',
+    allowedHosts: ['admin.dolamthanhphat.io.vn'],
+    port: 3003, // đổi cổng khi preview
   },
   css: {
-    devSourcemap: true
+    devSourcemap: false
   },
-  // build: {
-  //   outDir: 'dist', // nơi build ra file tĩnh
-  //   minify: 'esbuild'
-  // },
+  build: {
+    outDir: 'dist',
+    minify: 'esbuild'
+  },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, './src')
+      src: path.resolve(__dirname, './src')
     }
   }
-  //  base: '/',              // ⚠️ QUAN TRỌNG khi deploy VPS (dùng Nginx)
 })
