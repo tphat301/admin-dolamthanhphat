@@ -1,4 +1,3 @@
-// components/MyEditor.tsx
 import { Editor } from '@tinymce/tinymce-react'
 import { useRef } from 'react'
 
@@ -41,7 +40,8 @@ export default function MyEditor({ value, onChange }: MyEditorProps) {
         toolbar:
           'undo redo | formatselect | bold italic backcolor | ' +
           'alignleft aligncenter alignright alignjustify | ' +
-          'bullist numlist outdent indent | removeformat | image media link | help',
+          'bullist numlist outdent indent | removeformat | image media link | help' +
+          '|code',
         file_picker_types: 'image',
         file_picker_callback: (callback) => {
           const input = document.createElement('input')

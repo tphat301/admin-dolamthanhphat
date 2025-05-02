@@ -8,7 +8,6 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { isUndefined, keyBy, omitBy } from 'lodash'
 import { useQueryParams } from '../../hooks/useQueryParams'
 import Pagination from '../../components/Pagination/Pagination'
-import noimage from '../../../public/noimage.png'
 import { fullUrlImage } from '../../utils/commons'
 import { ExtendedServices } from '../../types/service.types'
 import serviceApi from '../../apis/service.apis'
@@ -130,7 +129,7 @@ const Services = () => {
                         <img
                           crossOrigin='anonymous'
                           className='w-[50px]'
-                          src={fullUrlImage(item?.image as string) || noimage}
+                          src={fullUrlImage(item?.image as string) || '/noimage.png'}
                           alt=''
                         />
                       </TableCell>

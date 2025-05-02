@@ -10,7 +10,6 @@ import { isUndefined, keyBy, omitBy } from 'lodash'
 import { useQueryParams } from '../../hooks/useQueryParams'
 import { ExtendedBlogs } from '../../types/blog.types'
 import Pagination from '../../components/Pagination/Pagination'
-import noimage from '../../../public/noimage.png'
 import { fullUrlImage } from '../../utils/commons'
 
 const Blogs = () => {
@@ -130,7 +129,7 @@ const Blogs = () => {
                         <img
                           crossOrigin='anonymous'
                           className='w-[50px]'
-                          src={fullUrlImage(item?.image as string) || noimage}
+                          src={fullUrlImage(item?.image as string) || '/noimage.png'}
                           alt=''
                         />
                       </TableCell>

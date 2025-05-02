@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { Card, CardContent } from '../../components/ui/card'
 import * as yup from 'yup'
-import noimage from '../../../public/noimage.png'
 import blogApi from '../../apis/blog.apis'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { fullUrlImage, slugify } from '../../utils/commons'
@@ -218,7 +217,7 @@ const BlogDetail = () => {
                     <div className='my-5'>
                       <img
                         crossOrigin='anonymous'
-                        src={previewImage || fullUrlImage(blog?.image as string) || noimage}
+                        src={previewImage || fullUrlImage(blog?.image as string) || '/noimage.png'}
                         className='w-full h-full object-cover'
                         alt=''
                       />

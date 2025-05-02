@@ -1,6 +1,5 @@
 import AuthInput from '../../components/AuthInput'
 import { Card, CardContent } from '../../components/ui/card'
-import noimage from '../../../public/noimage.png'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import MyEditor from '../../components/MyEditor'
@@ -198,7 +197,7 @@ const BlogCreate = () => {
                 <div className='flex justify-center'>
                   <div className='flex flex-col items-center'>
                     <div className='my-5'>
-                      <img src={previewImage || noimage} className='w-full h-full object-cover' alt='' />
+                      <img src={previewImage || '/noimage.png'} className='w-full h-full object-cover' alt='' />
                     </div>
                     <InputFile onChange={handleChangeFile} />
                     <div className='mt-3 text-gray-400'>Dung lượng tối đa 1 MB</div>

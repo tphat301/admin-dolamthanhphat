@@ -10,7 +10,6 @@ import InputNumber from '../../components/InputNumber'
 import { userSchema } from '../../utils/validation'
 import InputFile from '../../components/InputFile'
 import { fullUrlImage } from '../../utils/commons'
-import noimage from '../../../public/noimage.png'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import userApi from '../../apis/user.apis'
 import { AppContext } from '../../contexts/app.context'
@@ -179,7 +178,7 @@ const UserProfile = () => {
                     <div className='my-5'>
                       <img
                         crossOrigin='anonymous'
-                        src={previewImage || fullUrlImage(profileUser?.avatar as string) || noimage}
+                        src={previewImage || fullUrlImage(profileUser?.avatar as string) || '/noimage.png'}
                         className='w-full h-full object-cover'
                         alt=''
                       />

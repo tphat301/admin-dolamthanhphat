@@ -6,7 +6,6 @@ import aboutApi from '../../apis/about.apis'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import noimage from '../../../public/noimage.png'
 import { httpStatusCode } from '../../constants/httpStatusCode'
 import { Card, CardContent } from '../../components/ui/card'
 import AuthInput from '../../components/AuthInput'
@@ -218,7 +217,7 @@ const About = () => {
                   <div className='flex flex-col items-center'>
                     <div className='my-5'>
                       <img
-                        src={previewImage || fullUrlImage(aboutRes?.image as string) || noimage}
+                        src={previewImage || fullUrlImage(aboutRes?.image as string) || '/noimage.png'}
                         className='w-full h-full object-cover'
                         alt='Title'
                         crossOrigin='anonymous'
