@@ -14,6 +14,7 @@ export default function MyEditor({ value, onChange }: MyEditorProps) {
       onInit={(_, editor) => (editorRef.current = editor)}
       value={value}
       onEditorChange={onChange}
+      disabled={true}
       init={{
         height: 500,
         menubar: false,
