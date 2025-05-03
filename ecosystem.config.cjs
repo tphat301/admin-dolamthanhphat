@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'dolamthanhphat-admin',
       script: 'npm',
-      args: 'run preview -- --host',
+      args: 'run preview -- --host --port 3003',
       env: {
         NODE_ENV: 'production'
       }
