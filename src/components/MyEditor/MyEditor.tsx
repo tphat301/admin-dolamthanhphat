@@ -14,10 +14,10 @@ export default function MyEditor({ value, onChange }: MyEditorProps) {
       onInit={(_, editor) => (editorRef.current = editor)}
       value={value}
       onEditorChange={onChange}
-      disabled={true}
+      disabled={false}
       init={{
         height: 500,
-        menubar: false,
+        menubar: true,
         plugins: [
           'advlist',
           'autolink',
