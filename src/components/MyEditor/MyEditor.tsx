@@ -1,6 +1,5 @@
 import { Editor } from '@tinymce/tinymce-react'
 import { useRef } from 'react'
-import tinymce from 'tinymce'
 
 interface MyEditorProps {
   value: string
@@ -15,36 +14,53 @@ export default function MyEditor({ value, onChange }: MyEditorProps) {
       onInit={(_, editor) => (editorRef.current = editor)}
       value={value}
       onEditorChange={onChange}
+      disabled={true}
       init={{
-        plugins:
-          'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        height: 500,
+        menubar: false,
+        plugins: [
+          'advlist',
+          'autolink',
+          'lists',
+          'link',
+          'image',
+          'charmap',
+          'preview',
+          'anchor',
+          'searchreplace',
+          'visualblocks',
+          'code',
+          'fullscreen',
+          'insertdatetime',
+          'media',
+          'table',
+          'code',
+          'help',
+          'wordcount'
+        ],
         toolbar:
-          'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        file_picker_types: 'file image media',
-        block_unsupported_drop: false,
-        file_picker_callback: (cb) => {
+          'undo redo | formatselect | bold italic backcolor | ' +
+          'alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist outdent indent | removeformat | image media link | help' +
+          '|code',
+        file_picker_types: 'image',
+        file_picker_callback: (callback) => {
           const input = document.createElement('input')
           input.setAttribute('type', 'file')
           input.setAttribute('accept', 'image/*')
-
-          input.addEventListener('change', (e) => {
-            const file = (e.target as HTMLInputElement).files?.[0]
+          input.onchange = function () {
+            const file = (this as HTMLInputElement).files?.[0]
             if (file) {
               const reader = new FileReader()
-              reader.addEventListener('load', () => {
-                const id = 'blobid' + new Date().getTime()
-                const blobCache = (tinymce.activeEditor as any).editorUpload.blobCache
-                const base64 = (reader.result as string).split(',')[1]
-                const blobInfo = blobCache.create(id, file, base64)
-                blobCache.add(blobInfo)
-
-                /* call the callback and populate the Title field with the file name */
-                cb(blobInfo.blobUri(), { title: file.name })
-              })
+              reader.onload = function () {
+                const url = reader.result?.toString()
+                if (url) {
+                  callback(url, { title: file.name })
+                }
+              }
               reader.readAsDataURL(file)
             }
-          })
-
+          }
           input.click()
         },
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
