@@ -39,7 +39,7 @@ export default function MyEditor({ value, onChange }: MyEditorProps) {
           'wordcount'
         ],
         toolbar:
-          'undo redo | formatselect | bold italic backcolor | ' +
+          'undo redo| blocks fontfamily fontsize | formatselect | bold italic backcolor | ' +
           'alignleft aligncenter alignright alignjustify | ' +
           'bullist numlist outdent indent | removeformat | image media link | help' +
           '|code',
